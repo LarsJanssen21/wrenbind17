@@ -2,8 +2,9 @@ include(FindPackageHandleStandardArgs)
 
 if(NOT TARGET Wren)
   find_path(WREN_INCLUDE_DIR NAMES wren.hpp PATHS ${CMAKE_CURRENT_LIST_DIR}/../libs/wren/src/include)
-  find_path(WREN_OPTIONAL_DIR NAMES [*.c, *.h] PATHS ${CMAKE_CURRENT_LIST_DIR}/../libs/wren/src/optional)
+  set(WREN_OPTIONAL_DIR /../libs/wren/src/optional)
   mark_as_advanced(FORCE WREN_INCLUDE_DIR)
+  mark_as_advanced(FORCE WREN_OPTIONAL_DIR)
 
   file(GLOB_RECURSE WREN_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/libs/wren/src/vm/*.c)
   add_library(Wren STATIC ${WREN_SOURCES}) 
